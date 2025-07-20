@@ -1,8 +1,6 @@
-version: '3.8'
-
 networks:
   default:
-    driver: bridge
+    external: true
     name: roboshop
 
 volumes:
