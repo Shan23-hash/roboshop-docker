@@ -1,9 +1,18 @@
 FROM node:20
+
+# Set working directory
 WORKDIR /opt/server
-COPY package.json .
-COPY *.js .
+
+# Copy everything in the current context (including .js, folders, etc.)
+COPY . .
+
+# Install dependencies
 RUN npm install
+
+# Set environment variables
 ENV MONGO="true" \
     REDIS_URL="redis://redis:6379" \
     MONGO_URL="mongodb://mongodb:27017/users"
-CMD ["node","server.js"]
+
+# Start the app
+CMD ["node", "server.js"]
